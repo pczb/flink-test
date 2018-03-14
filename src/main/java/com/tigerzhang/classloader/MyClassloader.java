@@ -45,13 +45,12 @@ public class MyClassloader extends URLClassLoader {
         MyClassloader classloader1 = new MyClassloader(new URL[0], MyClassloader.class.getClassLoader());
         MyClassloader classloader2 = new MyClassloader(new URL[0], MyClassloader.class.getClassLoader());
         Class<A> aClass = (Class<A>) classloader1.loadClass("com.tigerzhang.classloader.A");
-        aClass = (Class<A>) classloader1.loadClass("com.tigerzhang.classloader.A");
         Class<B> xClass = (Class<B>) classloader1.loadClass("com.tigerzhang.classloader.B");
         Class<A> bClass = (Class<A>) classloader2.loadClass("com.tigerzhang.classloader.A");
 
         System.out.println(aClass.newInstance());
         System.out.println(bClass.newInstance());
         System.out.println(aClass.newInstance() instanceof C);
-        ((C)aClass.newInstance()).cccc();
+        (aClass.newInstance()).cccc();
     }
 }
